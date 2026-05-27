@@ -72,7 +72,7 @@ function Cadastro() {
           email: email,
           entrou_em: new Date().toISOString()
         });
-        feed("/feed");
+        navigate("/feed");
       };
 
       if(socket.connected){
@@ -83,7 +83,6 @@ function Cadastro() {
           enviarSinalOnline();
         });
       }
-        navigate("/feed");
     }
   }
 
