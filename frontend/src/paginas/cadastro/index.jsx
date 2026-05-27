@@ -65,8 +65,25 @@ function Cadastro() {
         nome_usuario: usuario,
         data_cadastro: new Date().toISOString()
       });
-      
-      navigate("/feed");
+      const enviarSinalOnline = () => {
+        socket.emit('usuario_online', {
+          nome_usuario: usuario,
+          id_usuario: userId,
+          email: email,
+          entrou_em: new Date().toISOString()
+        });
+        feed("/feed");
+      };
+
+      if(socket.connected){
+        enviarSinalOnline();
+      } else {
+        socket.connect();
+        socket.once('connect', () => {
+          enviarSinalOnline();
+        });
+      }
+        navigate("/feed");
     }
   }
 
