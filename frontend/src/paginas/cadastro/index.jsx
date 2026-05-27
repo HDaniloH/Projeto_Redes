@@ -65,7 +65,7 @@ function Cadastro() {
         nome_usuario: usuario,
         data_cadastro: new Date().toISOString()
       });
-      navigate("/home");
+      navigate("/feed");
       }
 
   }
